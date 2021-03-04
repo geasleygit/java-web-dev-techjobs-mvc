@@ -11,7 +11,7 @@
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <!-- TODO #1 - Use a loop to display job results in a table. -->
-    <table class="job-listing">
+    <table th:block th:each="job : ${jobs}" class="job-listing">
 <!--        <tr>-->
 <!--            <th>All</th>-->
 <!--            <th>Employer</th>-->
@@ -19,16 +19,19 @@
 <!--            <th>Position Type</th>-->
 <!--            <th>Skill</th>-->
 <!--        </tr>-->
-
-        <tr th:each="job : ${jobs}">
-            <td>
-            <p th:text="${'id: ' + job.id}"></p>
-            <p th:text="${'employer: ' + job.employer}"></p>
-            <p th:text="${'location: ' + job.location}"></p>
-            <p th:text="${'positionType: ' + job.positionType}"></p>
-            <p th:text="${'coreCompetency: ' + job.coreCompetency}"></p>
-            </td>
+        <tr>
+            <td th:text="${'ID: ' + job.id}"></td>
         </tr>
+        <tr>
+            <td th:text="${'Name: ' + job.name}"></td>
+        </tr>
+        <tr><td th:text="${'Employer: ' + job.employer}"></td></tr>
+
+        <tr><td th:text="${'Location: ' + job.location}"></td></tr>
+
+          <tr> <td th:text="${'Position Type: ' + job.positionType}"></td></tr>
+          <tr><td th:text="${'Skill: ' + job.coreCompetency}"></td></tr>
+
     </table>
 
 <!--    <div th:if="${#list.isEmpty(jobs)}">-->
